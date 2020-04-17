@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from flipkart.views import SignUpView, ActivateAccount
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('flipkart.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
      path('signup/', SignUpView.as_view(), name='signup'),
-    path('activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),    
-]
+    path('activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'), 
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

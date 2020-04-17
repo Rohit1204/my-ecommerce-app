@@ -1,4 +1,46 @@
-<h2>Sign Page</h2>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='copyright' content=''>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Title Tag  -->
+    <title>Flipkart</title>
+	<!-- Favicon -->
+	<link rel= "icon" href="../../../static/admin/img/flipkart.png" type= "image/x-icon"
+	
+	<!-- Web Font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	<!-- Eshop StyleSheet -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+
+<style>
+.heading{
+    display:inline-flex ;
+    color:white;
+    background-color: blue;
+    align-items: center;
+    width:100%;
+    justify-content: center;
+    font-style: italic;
+}	
+</style>	
+	
+</head>
+
+
+<div class="heading">
+    <h2>Flipkart</h2>
+    <img src="../../../static/admin/img/flipkart.png" alt="image" height="30"/>
+</div>
+
+
+
+<h2><center>Sign Up Page</center></h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

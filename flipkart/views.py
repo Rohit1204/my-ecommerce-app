@@ -17,6 +17,9 @@ from django.core.mail import EmailMessage
 def index(request):
     return render(request,'flipkart/index.html')
 
+def about(request):
+      return HttpResponse("about page")
+
 
 class ActivateAccount(View):
 

@@ -13,13 +13,50 @@ from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.template.loader import render_to_string
 from flipkart.tokens import account_activation_token
 from django.core.mail import EmailMessage
+from .models import Product,Contact
+from math import ceil
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 # Create your views here.
 def index(request):
-    return render(request,'flipkart/index.html')
+    allProds = []
+    catprods = Product.objects.values('category', 'id')
+    cats = {item['category'] for item in catprods}
+    for cat in cats:
+        prod = Product.objects.filter(category=cat)
+        n = len(prod)
+        nSlides = n // 4 + ceil((n / 4) - (n // 4))
+        allProds.append([prod, range(1, nSlides), nSlides])
+    params = {'allProds':allProds}   
+    return render(request,'flipkart/index.html',params)
 
 def about(request):
-      return HttpResponse("about page")
+      return render(request,'flipkart/about.html')
 
+def checkout(request):
+      return render(request,'flipkart/checkout.html')
+
+def contact(request):
+    if request.method=="POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        desc = request.POST.get('desc', '')
+        contact = Contact(name=name, email=email, phone=phone, desc=desc)
+        contact.save()
+    return render(request,'flipkart/contact.html')
+
+def tracker(request):
+      return render(request,'flipkart/tracker.html')
+
+def search(request):
+      return render(request,'flipkart/search.html')
+
+def prodView(request,myid):
+      product = Product.objects.filter(id=myid)
+      return render(request,'flipkart/prodView.html',{'product':product[0]})
 
 class ActivateAccount(View):
 

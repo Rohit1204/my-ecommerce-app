@@ -8,21 +8,70 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	<link rel= "icon" href="../../../static/admin/img/flipkart.png" type= "image/x-icon">
     <title>{% block title %} {% endblock %}</title>
     <style>
       img{
     height:50px;
   }
-  .footer{
-   
+  .fa{
+    font-size:28px;
+     border-radius:24px;
+  transition: .3s linear;
+  
+   width:80px;
+  height:80px;
+  padding: 20px;
+  overflow: hidden;
+  box-shadow: 6px 6px 12px rgba(0,0,0,.15),
+    -6px -6px 12px rgba(255,255,255,.1);
+margin:0 20px;
+display:inline-block;
+position: relative;
+text-align: center;
+  }
+  .fa:hover{
+    transform: scale(1.1);
+    border-radius: 50%;
+  }
+  .fa i::before{
+    position: absolute;
+    width: 100%;
+   height: 100%;
+   text-align: center;
+   background-image: linear-gradient(135deg,#000000 30%, #000000 50%);
+   background-size: 200% 200%;
+   top:0;
+   left:0;
+   line-height: 80px;
+   background-position:75% 75% ;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   transition: .5s linear;
+  }
+
+  .fa-instagram::before{
+    background-color: #cc1111
+   color: pink;
+    
+  }
+  .fa-github::before{
+    background-color: #000000
+   color: black;
+    
+  }
+  .fa::hover i::before{
+    background-position: 0% 0%;
+  }
+  footer{
+   background-color:#212141;
    left:0;
    bottom:0;
    width:100%;
    text-align:center;
    color:white;
-   background-color:#212141;
    background-image: url({% static "/admin/img/footer.svg" % });
    background-repeat: no-repeat;
    background-position: 100% center;
@@ -57,10 +106,9 @@
               More
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Nottification Preference</a>
-              <a class="dropdown-item" href="#">Sell on Flipkart</a>
+              <a class="dropdown-item" href="/about">About us</a>
               <a class="dropdown-item" href="/signup">Sign Up</a>
-              <a class="dropdown-item" href="#">24X7 Customer Care</a>
+              <a class="dropdown-item" href="/contact">24X7 Customer Care</a>
             </div>
           </li>
           <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
@@ -69,7 +117,8 @@
           
             Cart(<span id="cart">0</span>)
           </button>
-           
+          <button type="button" class="btn btn-primary" id="popcart" onclick="clearCart()">Clear Cart</button>
+          <a href='/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>
         </ul>
       </div>
   </div>
@@ -85,7 +134,12 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
    {% block js %} {% endblock %}
   </body>
-  <div class="footer">
+  <footer class="container-fluid">
+    <p><center>&copy; 2019 Copyright Rohit04<i class="fa-fa-arrow-alt-circle-up"></i>
+</br>
+<a  href="http://www.instagram.com" class="fa fa-instagram"></a>
+    <a  href="http://www.github.com/rohit1204" class="fa fa-github"></a></center></p>
     <img src="../../../static/admin/img/flipkart.png">Flipkart PVT. Limited </img>
-  </div>
+</footer>
+    
 </html>

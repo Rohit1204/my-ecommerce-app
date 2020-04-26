@@ -13,11 +13,15 @@ from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.template.loader import render_to_string
 from flipkart.tokens import account_activation_token
 from django.core.mail import EmailMessage
-from .models import Product,Contact
+from .models import Product,Contact,Orders,OrderUpdate
 from math import ceil
 import logging
+import json 
+from django.views.decorators.csrf import csrf_exempt
+from PayTm import Checksum
 
 # Get an instance of a logger
+MERCHANT_KEY='NK8h30a19NO&z9Gq'
 logger = logging.getLogger(__name__)
 # Create your views here.
 def index(request):
@@ -36,9 +40,41 @@ def about(request):
       return render(request,'flipkart/about.html')
 
 def checkout(request):
-      return render(request,'flipkart/checkout.html')
+    if request.method=="POST":
+        items_json = request.POST.get('itemsJson', '')
+        name = request.POST.get('name', '')
+        amount = request.POST.get('amount', '')
+        email = request.POST.get('email', '')
+        address = request.POST.get('address1', '') + " " + request.POST.get('address2', '')
+        city = request.POST.get('city', '')
+        state = request.POST.get('state', '')
+        zip_code = request.POST.get('zip_code', '')
+        phone = request.POST.get('phone', '')
+        order = Orders(items_json=items_json, name=name, email=email, address=address, city=city,
+                       state=state, zip_code=zip_code, phone=phone)
+        order.save()
+        thank = True
+        id = order.order_id
+        param_dict = {
+
+                'MID': 'mstNNq20620258304261',
+                'ORDER_ID': str(order.order_id),
+                'TXN_AMOUNT': str(amount),
+                'CUST_ID': email,
+                'INDUSTRY_TYPE_ID': 'Retail',
+                'WEBSITE': 'WEBSTAGING',
+                'CHANNEL_ID': 'WEB',
+                'CALLBACK_URL':'http://127.0.0.1:8000/handlerequest/',
+
+        }
+        param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
+        return render(request, 'flipkart/paytm.html', {'param_dict': param_dict})
+        return render(request, 'flipkart/checkout.html', {'thank':thank, 'id': id})
+    return render(request, 'flipkart/checkout.html')
+
 
 def contact(request):
+    thank=False
     if request.method=="POST":
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
@@ -46,11 +82,29 @@ def contact(request):
         desc = request.POST.get('desc', '')
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
+        thank=True
     return render(request,'flipkart/contact.html')
 
 def tracker(request):
-      return render(request,'flipkart/tracker.html')
+      if request.method=="POST":
+        orderId = request.POST.get('orderId', '')
+        email = request.POST.get('email', '')
+        try:
+            order = Orders.objects.filter(order_id=orderId, email=email)
+            if len(order)>0:
+                update = OrderUpdate.objects.filter(order_id=orderId)
+                updates = []
+                for item in update:
+                    updates.append({'text': item.update_desc, 'time': item.timestamp})
+                    response = json.dumps({"status":"success", "updates": updates, "itemsJson": order[0].items_json}, default=str)
+                return HttpResponse(response)
+            else:
+                return HttpResponse('{"status":"noitem"}')
+        except Exception as e:
+            return HttpResponse('{"status":"error"}')
 
+      return render(request, 'flipkart/tracker.html')
+    
 def search(request):
       return render(request,'flipkart/search.html')
 
@@ -116,3 +170,21 @@ class SignUpView(View):
             return redirect('index')
 
         return render(request, self.template_name, {'form': form})
+
+@csrf_exempt
+def handlerequest(request):
+    # paytm will send you post request here
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+
+    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print('order successful')
+        else:
+            print('order was not successful because' + response_dict['RESPMSG'])
+    return render(request, 'flipkart/paymentstatus.html', {'response': response_dict})

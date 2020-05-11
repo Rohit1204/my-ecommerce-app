@@ -1,5 +1,5 @@
 Django==3.0.4
 Pillow==7.1.1
 datetime==4.3.0
-bs4
 pycryptodome==3.9.7
+Social-auth-app-django

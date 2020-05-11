@@ -5,6 +5,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Rohit Ahuja">
+    <meta
+    name="description"
+    content="E-commerce Website made by rohit Ahuja"
+  />
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -21,19 +27,57 @@
   height: 200px;
   }
   .fa{
-    font-size:28px;
+    font-size:25px;
   transition: .3s linear;
-   width:5px;
-  height:5px;
-  padding: 5px;
+   width:5vw;
+  height:5vw;
+  padding: 5vw;
 margin:0 5px;
 display:inline;
 position: relative;
 text-align: center;
   }
+ .accordion{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .accordion__row{
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid;
+  }
+  .accordion__content{
+   max-height: 0;
+   overflow: hidden;
+   transition: height 0.3s ease-in-out;
+  }
+  .accordion__heading{
+    color: #fc4686;
+    display: flex;
+    padding: 20px 30px;
+    
+    
+  }
+.Faq{
+  background-image: linear-gradient(to bottom right, #f7f8fd 30%, #e6e6ff 50%);
+}
+.fa-plus{
+  color:black;
+  padding-right: 70px;
+}
+.sub{
+  letter-spacing: 0.15em;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  color: #1A73E8;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
  .fa-cart-plus::before{
    color:black;
-   margin:-10px;
+   margin:-5vw;
  }
   .fa:hover{
     transform: scale(1.7);
@@ -52,6 +96,7 @@ text-align: center;
   .fa::hover i::before{
     background-position: 0% 0%;
   }
+  
   footer{
    background-color:#212141;
    left:0;
@@ -64,15 +109,21 @@ text-align: center;
    background-position: 100% center;
    z-index: 1;
  }
+ 
  .form-control{
-	  width: 500px !important;
+	  width: 40vw !important;
+  }
+  @media screen and (max-width:800px){
+    .form-control{
+      width:60vw !important;
+    }
   }
  {% block css %} {% endblock %}
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
-        <div class="navbar d-md-flex d-block flex-row mx-md-auto mx-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary pt-0 pb-0 ">
+        <div class="navbar md-flex  mx-auto">
       <a class="navbar-brand" href="/">Flipkart</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -84,7 +135,7 @@ text-align: center;
           <input class="form-control " type="search" placeholder="Search for products,brands and more" aria-label="Search">
           <button class="btn btn-outline-success " type="submit">Search</button>
         </form>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
@@ -102,7 +153,7 @@ text-align: center;
           sagittis lacus vel augue laoreet rutrum faucibus.">
             <i class="fa fa-cart-plus"></i>        (<span id="cart">0</span>)
           </button>
-          <button type="button" class="btn btn-primary" id="popcart" onclick="clearCart()">Clear Cart</button>
+          <button class="btn btn-primary" id="popcart" onclick="clearCart()">Clear Cart</button>
           <a href='/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>
         </ul>
       </div>

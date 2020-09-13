@@ -1,1 +1,1 @@
-web: gunicorn flipkart.wsgi --log-file -
+web: gunicorn Ecommerce.wsgi --log-file -

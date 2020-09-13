@@ -10,7 +10,7 @@ idna==2.9
 numpy==1.19.1
 oauthlib==3.1.0
 pandas==1.1.1
-Pillow==7.1.1
+Pillow==7.0.0
 pycparser==2.20
 pycryptodome==3.9.7
 PyJWT==1.7.1
@@ -26,4 +26,5 @@ social-auth-core==3.3.3
 SpeechRecognition==3.8.1
 sqlparse==0.3.1
 twilio==6.40.0
+unicorn==1.0.1
 urllib3==1.25.9

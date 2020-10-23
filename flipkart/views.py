@@ -1,4 +1,5 @@
 from django.shortcuts import HttpResponse
+from Ecommerce import settings  
 
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -12,7 +13,7 @@ from django.contrib.auth import login, authenticate
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.template.loader import render_to_string
 from flipkart.tokens import account_activation_token
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage,send_mail
 from .models import Product,Contact,Orders,OrderUpdate
 from math import ceil
 import logging
@@ -121,7 +122,7 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        login(request, user)
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         # return redirect('home')
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
@@ -144,11 +145,13 @@ def signup(request):
                 'token':account_activation_token.make_token(user),
             })
             to_email = form.cleaned_data.get('email')
-            email = EmailMessage(
-                        mail_subject, message, to=[to_email]
-            )
-            email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+
+            res  = send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [to_email])  
+            if(res == 1):
+                msg = "Mail Sent Successfuly"  
+            else:  
+                msg = "Mail could not sent" 
+            return HttpResponse(msg)
     else:
         form = SignupForm()
     return render(request, 'flipkart/signup.html', {'form': form})

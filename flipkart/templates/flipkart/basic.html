@@ -130,11 +130,12 @@ text-align: center;
       </button>
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       
+       {% if user.is_authenticated %} 
         <form class="form-inline  ">
           <input class="form-control " type="search" placeholder="Search for products,brands and more" aria-label="Search">
           <button class="btn btn-outline-success " type="submit">Search</button>
         </form>
+        {% endif %}
         <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
           <li class="nav-item active dropdown">
@@ -146,7 +147,8 @@ text-align: center;
             </div>
           </li>
           {% else %}
-  <a  class="nav-link" href="{% url 'login' %}">Log In</a>
+  <a  class="navbar-brand" href="{% url 'login' %}">Log In</a>
+  <a  class="navbar-brand" href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -157,12 +159,16 @@ text-align: center;
               <a class="dropdown-item" href="/contact">24X7 Customer Care</a>
             </div>
           </li>
+          {% if user.is_authenticated %} 
           <button type="button" class="btn btn-warning" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
           sagittis lacus vel augue laoreet rutrum faucibus.">
             <i class="fa fa-cart-plus"></i>        (<span id="cart">0</span>)
           </button>
+
           <button class="btn btn-primary" id="popcart" onclick="clearCart()">Clear Cart</button>
           <a href='/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>
+      {% endif %}
+
         </ul>
       </div>
   </div>
@@ -179,7 +185,7 @@ text-align: center;
    {% block js %} {% endblock %}
   </body>
   <footer class="container-fluid">
-    <p><center>&copy; 2019 Copyright Rohit04<i class="fa-fa-arrow-alt-circle-up"></i>
+    <p><center>&copy; 2020 Copyright Rohit04<i class="fa-fa-arrow-alt-circle-up"></i>
 </br>
 <a  href="http://www.instagram.com" class="fa fa-instagram"></a>
     <a  href="http://www.github.com/rohit1204" class="fa fa-github"></a></center></p>

@@ -19,6 +19,7 @@
 	<link rel= "icon" href="../../../static/admin/img/flipkart.png" type= "image/x-icon">
     <title>{% block title %} {% endblock %}</title>
     <style>
+    
       img{
     height:50px;
   }
@@ -26,6 +27,32 @@
   width: 170px;
   height: 200px;
   }
+  .login-box
+{
+  width:280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+.submit{
+   width: 100%;
+  background: none;
+  border: 2px solid #007bff;
+}
+.submit:hover
+{
+  color:white;
+  background-color: #007bff;
+}
+.login-box h1
+{
+  border-bottom:6px solid #007bff;
+  margin-bottom: 50px;
+  padding: 10px 0;
+
+}
   .fa{
     font-size:25px;
   transition: .3s linear;
@@ -147,8 +174,8 @@ text-align: center;
             </div>
           </li>
           {% else %}
-  <a  class="navbar-brand" href="{% url 'login' %}">Log In</a>
-  <a  class="navbar-brand" href="{% url 'signup' %}">Sign Up</a>
+  <a  class="navbar-brand ml-auto " href="{% url 'login' %}">LOGIN</a>
+  <a  class="navbar-brand ml-auto" href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

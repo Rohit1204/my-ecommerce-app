@@ -38,7 +38,8 @@ def index(request):
         allProds.append([prod, range(1, nSlides), nSlides])
     params = {'allProds':allProds}   
     return render(request,'flipkart/index.html',params)
-
+ 
+@login_required(login_url='/login')
 def about(request):
       return render(request,'flipkart/about.html')
 

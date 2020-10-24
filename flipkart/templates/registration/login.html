@@ -1,0 +1,12 @@
+{% extends 'flipkart/basic.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+  <h2><center>Login </center></h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}

@@ -20,11 +20,13 @@ import logging
 import json 
 from django.views.decorators.csrf import csrf_exempt
 from PayTm import Checksum
+from django.contrib.auth.decorators import login_required
 
 # Get an instance of a logger
 MERCHANT_KEY='NK8h30a19NO&z9Gq'
 logger = logging.getLogger(__name__)
 # Create your views here.
+@login_required(login_url='/login')
 def index(request):
     allProds = []
     catprods = Product.objects.values('category', 'id')
@@ -151,7 +153,7 @@ def signup(request):
                 msg = "Mail Sent Successfuly"  
             else:  
                 msg = "Mail could not sent" 
-            return HttpResponse(msg)
+            return HttpResponse('Please checkout your email address to complete the registration')
     else:
         form = SignupForm()
     return render(request, 'flipkart/signup.html', {'form': form})

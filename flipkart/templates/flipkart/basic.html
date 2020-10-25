@@ -1,222 +1,225 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Rohit Ahuja">
-    <meta
-    name="description"
-    content="E-commerce Website made by rohit Ahuja"
-  />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Rohit Ahuja">
+  <meta
+  name="description"
+  content="E-commerce Website made by rohit Ahuja"
+/>
 
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-	<link rel= "icon" href="../../../static/admin/img/flipkart.png" type= "image/x-icon">
-    <title>{% block title %} {% endblock %}</title>
-    <style>
-    
-      img{
-    height:50px;
-  }
-  .col-md-3 img{
-  width: 170px;
-  height: 200px;
-  }
-  .login-box
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel= "icon" href="../../../static/admin/img/flipkart.png" type= "image/x-icon">
+  <title>{% block title %} {% endblock %}</title>
+  <style>
+  
+img{
+height:50px;
+}
+.col-md-3 img{
+width: 170px;
+height: 200px;
+}
+.login-box
 {
-  width:280px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+width:280px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 
 }
 .submit{
-   width: 100%;
-  background: none;
-  border: 2px solid #007bff;
+  width: 100%;
+background: none;
+border: 2px solid #007bff;
 }
 .submit:hover
 {
-  color:white;
-  background-color: #007bff;
+color:white;
+background-color: #007bff;
 }
 .login-box h1
 {
-  border-bottom:6px solid #007bff;
-  margin-bottom: 50px;
-  padding: 10px 0;
+border-bottom:6px solid #007bff;
+margin-bottom: 50px;
+padding: 10px 0;
 
 }
-  .fa{
-    font-size:25px;
-  transition: .3s linear;
-   width:5vw;
-  height:5vw;
-  padding: 5vw;
+.fa{
+  font-size:25px;
+transition: .3s linear;
+  width:5vw;
+height:5vw;
+padding: 5vw;
 margin:0 5px;
 display:inline;
 position: relative;
 text-align: center;
-  }
- .accordion{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .accordion__row{
-    padding: 10px;
-    border-bottom: 1px solid #cccccc;
-    border-top: 1px solid;
-  }
-  .accordion__content{
-   max-height: 0;
-   overflow: hidden;
-   transition: height 0.3s ease-in-out;
-  }
-  .accordion__heading{
-    color: #fc4686;
-    display: flex;
-    padding: 20px 30px;
-    
-    
-  }
+}
+.accordion{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.accordion__row{
+  padding: 10px;
+  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid;
+}
+.accordion__content{
+  max-height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+.accordion__heading{
+color: #fc4686;
+display: flex;
+padding: 20px 30px;
+}
 .Faq{
-  background-image: linear-gradient(to bottom right, #f7f8fd 30%, #e6e6ff 50%);
+background-image: linear-gradient(to bottom right, #f7f8fd 30%, #e6e6ff 50%);
 }
 .fa-plus{
-  color:black;
-  padding-right: 70px;
+color:black;
+padding-right: 70px;
 }
 .sub{
-  letter-spacing: 0.15em;
-  font-size: 14px;
-  display: block;
-  text-align: center;
-  color: #1A73E8;
-  margin-bottom: 5px;
-  font-weight: 700;
+letter-spacing: 0.15em;
+font-size: 14px;
+display: block;
+text-align: center;
+color: #1A73E8;
+margin-bottom: 5px;
+font-weight: 700;
 }
- .fa-cart-plus::before{
-   color:black;
-   margin:-5vw;
- }
-  .fa:hover{
-    transform: scale(1.7);
-  }
+.fa-cart-plus::before{
+  color:black;
+  margin:-5vw;
+}
+.fa:hover{
+  transform: scale(1.7);
+}
 
-  .fa-instagram::before{
-    background-color: #cc1111
-   color: pink;
-    
-  }
-  .fa-github::before{
-    background-color: #000000
-   color: black;
-    
-  }
-  .fa::hover i::before{
-    background-position: 0% 0%;
-  }
+.fa-instagram::before{
+  background-color: #cc1111
+  color: pink;
   
-  footer{
-   background-color:#212141;
-   left:0;
-   bottom:0;
-   width:100%;
-   text-align:center;
-   color:white;
-   background-image: url({% static "/admin/img/footer.svg" % });
-   background-repeat: no-repeat;
-   background-position: 100% center;
-   z-index: 1;
- }
- 
- .form-control{
-	  width: 40vw !important;
-  }
-  @media screen and (max-width:800px){
-    .form-control{
-      width:60vw !important;
-    }
-  }
- {% block css %} {% endblock %}
-    </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary pt-0 pb-0 ">
-        <div class="navbar md-flex  mx-auto">
-      <a class="navbar-brand" href="/">Flipkart</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       {% if user.is_authenticated %} 
-        <form class="form-inline  ">
-          <input class="form-control " type="search" placeholder="Search for products,brands and more" aria-label="Search">
-          <button class="btn btn-outline-success " type="submit">Search</button>
-        </form>
-        {% endif %}
-        <ul class="navbar-nav ml-auto">
-        {% if user.is_authenticated %}
-          <li class="nav-item active dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{request.user.username}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
-            </div>
-          </li>
-          {% else %}
-  <a  class="navbar-brand ml-auto " href="{% url 'login' %}">LOGIN</a>
-  <a  class="navbar-brand ml-auto" href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-          <li class="nav-item active dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              More
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/about">About us</a>
-              <a class="dropdown-item" href="/contact">24X7 Customer Care</a>
-            </div>
-          </li>
-          {% if user.is_authenticated %} 
-          <button type="button" class="btn btn-warning" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
-          sagittis lacus vel augue laoreet rutrum faucibus.">
-            <i class="fa fa-cart-plus"></i>        (<span id="cart">0</span>)
-          </button>
+}
+.fa-github::before{
+  background-color: #000000
+  color: black;
+  
+}
+.fa::hover i::before{
+  background-position: 0% 0%;
+}
 
-          <button class="btn btn-primary" id="popcart" onclick="clearCart()">Clear Cart</button>
-          <a href='/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a>
+footer{
+  background-color:#212141;
+  left:0;
+  bottom:0;
+  width:100%;
+  text-align:center;
+  color:white;
+  background-image: url({% static "/admin/img/footer.svg" % });
+  background-repeat: no-repeat;
+  background-position: 100% center;
+  z-index: 1;
+}
+.navbar-brand{
+  text-align: left;
+  padding-left:0px;
+
+  }
+
+.form-control{
+  width: 40vw !important;
+}
+@media screen and (max-width:800px){
+  .form-control{
+    width:60vw !important;
+  }
+}
+{% block css %} {% endblock %}
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary pt-0 pb-0 ">
+      <div class="navbar md-flex  mx-auto">
+    <a class="navbar-brand" href="/">Flipkart</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if user.is_authenticated %} 
+      <form class="form-inline  ">
+        <input class="form-control " type="search" placeholder="Search for products,brands and more" aria-label="Search">
+        <button class="btn btn-outline-success " type="submit">Search</button>
+      </form>
       {% endif %}
+      <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+        <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{request.user.username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
+          </div>
+        </li>
+        {% else %}
+<a  class="navbar-brand ml-auto " href="{% url 'login' %}">LOGIN</a>
+<a  class="navbar-brand ml-auto" href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+        <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/about">About us</a>
+            <a class="dropdown-item" href="/contact">24X7 Customer Care</a>
+            <a href='/checkout' class="dropdown-item">Checkout</a>
+          </div>
+        </li>
+        {% if user.is_authenticated %} 
+        <button type="button" class="btn btn-warning" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus.">
+          <i class="fa fa-cart-plus"></i>        (<span id="cart">0</span>)
+        </button>
 
-        </ul>
-      </div>
-  </div>
-    </nav>
-      {% block body %}
-      {% endblock %}
+        <button class="btn btn-primary" id="popcart" onclick="clearCart()">Clear Cart</button>
+    {% endif %}
 
-      <!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-   {% block js %} {% endblock %}
-  </body>
-  <footer class="container-fluid">
-    <p><center>&copy; 2020 Copyright Rohit04<i class="fa-fa-arrow-alt-circle-up"></i>
+      </ul>
+    </div>
+</div>
+  </nav>
+    {% block body %}
+    {% endblock %}
+
+    <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  {% block js %} {% endblock %}
+</body>
+<footer class="container-fluid">
+  <p><center>&copy; 2020 Copyright Rohit04<i class="fa-fa-arrow-alt-circle-up"></i>
 </br>
 <a  href="http://www.instagram.com" class="fa fa-instagram"></a>
-    <a  href="http://www.github.com/rohit1204" class="fa fa-github"></a></center></p>
-    <img src="../../../static/admin/img/flipkart.png">Flipkart PVT. Limited </img>
+  <a  href="http://www.github.com/rohit1204" class="fa fa-github"></a></center></p>
+  <img src="../../../static/admin/img/flipkart.png">Flipkart PVT. Limited </img>
 </footer>
-    
+  
 </html>

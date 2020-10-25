@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+  <link rel="stylesheet" href= "../">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel= "icon" href="../../../static/admin/img/flipkart.png" type= "image/x-icon">
     <meta charset="utf-8">
     <title>Login Page</title>
     <style>
@@ -62,15 +67,16 @@
   <a  class="navbar-brand ml-auto " href="{% url 'login' %}">LOGIN</a>
   <a  class="navbar-brand ml-auto" href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
-          <li class="nav-item active dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              More
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/about">About us</a>
-              <a class="dropdown-item" href="/contact">24X7 Customer Care</a>
-            </div>
-          </li>
+                 <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/about">About us</a>
+            <a class="dropdown-item" href="/contact">24X7 Customer Care</a>
+            <a href='/checkout' class="dropdown-item">Checkout</a>
+          </div>
+        </li>
           {% if user.is_authenticated %} 
           <button type="button" class="btn btn-warning" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
           sagittis lacus vel augue laoreet rutrum faucibus.">

@@ -15,6 +15,7 @@ from django.template.loader import render_to_string
 from flipkart.tokens import account_activation_token
 from django.core.mail import EmailMessage,send_mail
 from .models import Product,Contact,Orders,OrderUpdate
+from django.db.models import Q
 from math import ceil
 import logging
 import json 
@@ -71,6 +72,7 @@ def checkout(request):
                 'CALLBACK_URL':'http://127.0.0.1:8000/handlerequest/',
 
         }
+        print(id)
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
         return render(request, 'flipkart/paytm.html', {'param_dict': param_dict})
         return render(request, 'flipkart/checkout.html', {'thank':thank, 'id': id})
@@ -111,6 +113,22 @@ def tracker(request):
     
 def search(request):
       return render(request,'flipkart/search.html')
+
+def search_results(request):
+    query = request.GET['query']
+    print(query)
+    allProducts= Product.objects.filter( Q(product_name__icontains=query) | Q(category__icontains=query) )
+    print(allProducts) 
+    params = {'allProducts':allProducts} 
+    return render(request,'flipkart/search-results.html',params)
+    # queryset=[]
+    # queries=query.split(" ")
+    # for q in queries:
+    #     posts=Product.objects.filter(Q(product_name__icontrains=q) | Q(category__icontrains=q) | Q(subcategory__icontrains=q).distinct()
+    #     for post in posts:
+    #         queryset.append(post)
+    # return list(set(queryset))     
+
 
 def prodView(request,myid):
       product = Product.objects.filter(id=myid)

@@ -161,8 +161,8 @@ footer{
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       {% if user.is_authenticated %} 
-      <form class="form-inline  ">
-        <input class="form-control " type="search" placeholder="Search for products,brands and more" aria-label="Search">
+      <form class="form-inline " method="get" action="/search-results">
+        <input class="form-control " type="search" name="query" id="query" placeholder="Search for products,brands and more" aria-label="Search">
         <button class="btn btn-outline-success " type="submit">Search</button>
       </form>
       {% endif %}

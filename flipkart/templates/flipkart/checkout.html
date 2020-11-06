@@ -81,6 +81,7 @@ if ($.isEmptyObject(cart)) {
     mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
     $('#items').append(mystr);
 } else {
+    console.log(cart)
     for (item in cart) {
         let name = cart[item][1];
         let qty = cart[item][0];

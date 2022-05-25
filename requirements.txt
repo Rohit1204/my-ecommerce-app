@@ -17,7 +17,7 @@ PyAutoGUI==0.9.51
 pycparser==2.20
 pycryptodome==3.9.7
 PyGetWindow==0.0.9
-PyJWT==1.7.1
+PyJWT==2.4.0
 PyMsgBox==1.0.8
 pyperclip==1.8.0
 PyRect==0.1.4

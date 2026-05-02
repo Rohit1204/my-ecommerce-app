@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f6f9;
+  --foreground: #0f172a;
+  --header: #2874f0;
+  --accent: #fb641b;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(40, 116, 240, 0.08), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(251, 100, 27, 0.05), transparent 45%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .input-field {
+    @apply w-full rounded-xl border border-zinc-200/90 bg-white px-4 py-2.5 text-sm text-zinc-900 shadow-sm outline-none transition
+      placeholder:text-zinc-400
+      focus:border-brand/35 focus:ring-2 focus:ring-brand/15;
+  }
+
+  .textarea-field {
+    @apply w-full min-h-[120px] resize-y rounded-xl border border-zinc-200/90 bg-white px-4 py-3 text-sm text-zinc-900 shadow-sm outline-none transition
+      placeholder:text-zinc-400
+      focus:border-brand/35 focus:ring-2 focus:ring-brand/15;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand/20 transition
+      hover:bg-brand-dark hover:shadow-lg hover:shadow-brand/25
+      active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-md transition
+      hover:brightness-110 active:scale-[0.98] disabled:opacity-50;
+    box-shadow: 0 4px 14px rgba(251, 100, 27, 0.35);
+  }
+
+  .card-elevated {
+    @apply rounded-2xl border border-zinc-200/80 bg-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-sm;
+  }
+
+  .section-title {
+    @apply text-lg font-bold tracking-tight text-zinc-900 sm:text-xl;
+  }
+}
+
+::selection {
+  background: rgba(40, 116, 240, 0.2);
+}

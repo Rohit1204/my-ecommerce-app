@@ -1,5 +1,45 @@
-{% autoescape off %}
-Hi {{ user.username }},
-Please click on the link to confirm your registration,
-http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% autoescape on %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confirm your ShopHub account</title>
+</head>
+<body style="margin:0;padding:0;background:#f4f6f9;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f4f6f9;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" style="max-width:480px;background:#ffffff;border-radius:12px;box-shadow:0 4px 24px rgba(15,23,42,0.06);overflow:hidden;">
+          <tr>
+            <td style="padding:28px 28px 8px 28px;">
+              <p style="margin:0;font-size:18px;font-weight:700;color:#0f172a;letter-spacing:-0.02em;">ShopHub</p>
+              <p style="margin:16px 0 0 0;font-size:15px;line-height:1.55;color:#334155;">
+                Hi {{ user.username }},
+              </p>
+              <p style="margin:12px 0 0 0;font-size:15px;line-height:1.55;color:#334155;">
+                Confirm your email to finish setting up your account. The button below opens <strong>our storefront</strong> (same site as where you signed up)—not a separate API domain.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 28px 28px 28px;">
+              <a href="{{ activation_url }}" style="display:inline-block;padding:14px 24px;background:#2874f0;color:#ffffff;text-decoration:none;font-size:15px;font-weight:600;border-radius:10px;">
+                Confirm email &amp; activate
+              </a>
+              <p style="margin:20px 0 0 0;font-size:12px;line-height:1.5;color:#64748b;">
+                If the button doesn’t work, copy and paste this URL into your browser:<br>
+                <span style="word-break:break-all;color:#0f172a;">{{ activation_url }}</span>
+              </p>
+              <p style="margin:16px 0 0 0;font-size:12px;line-height:1.5;color:#94a3b8;">
+                If you didn’t create an account, you can ignore this message.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
 {% endautoescape %}

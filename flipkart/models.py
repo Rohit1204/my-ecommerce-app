@@ -11,10 +11,8 @@ class Profile(models.Model):
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
-        instance.profile.save()
 
 class Product(models.Model):
-    product_id = models.AutoField
     product_name = models.CharField(max_length=50)
     category = models.CharField(max_length=50, default="")
     subcategory = models.CharField(max_length=50, default="")
@@ -39,8 +37,22 @@ class Contact(models.Model):
 
 class Orders(models.Model):
     order_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="orders",
+    )
+    idempotency_key = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        db_index=True,
+        help_text="Client-supplied key; duplicate checkout with same user+key returns existing order.",
+    )
     items_json = models.CharField(max_length=5000)
-    amount = models.IntegerField( default=0)
+    amount = models.IntegerField(default=0)
     name = models.CharField(max_length=90)
     email = models.CharField(max_length=111)
     address = models.CharField(max_length=111)
@@ -49,9 +61,19 @@ class Orders(models.Model):
     zip_code = models.CharField(max_length=111)
     phone = models.CharField(max_length=111, default="")
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "idempotency_key"],
+                condition=models.Q(idempotency_key__isnull=False)
+                & models.Q(user__isnull=False),
+                name="orders_user_idempotency_key_uniq",
+            ),
+        ]
+
 class OrderUpdate(models.Model):
     update_id  = models.AutoField(primary_key=True)
-    order_id = models.IntegerField(default="")
+    order_id = models.IntegerField(default=0)
     update_desc = models.CharField(max_length=5000)
     timestamp = models.DateField(auto_now_add=True)
 

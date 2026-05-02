@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Confirm your ShopHub account by opening this link in your browser (it opens our site, not the API):
+
+{{ activation_url }}
+
+If you did not sign up, you can ignore this email.
+{% endautoescape %}

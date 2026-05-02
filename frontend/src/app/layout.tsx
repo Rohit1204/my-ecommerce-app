@@ -91,7 +91,20 @@ export default function RootLayout({
                   </div>
                 </div>
                 <p className="mt-10 border-t border-zinc-800 pt-6 text-center text-xs text-zinc-600 sm:text-left">
+                  <span className="font-semibold text-zinc-300">Built by Rohit Ahuja</span>
+                  <span className="mx-1.5 text-zinc-700" aria-hidden>
+                    ·
+                  </span>
                   Django REST API + Next.js · portfolio demo · © {new Date().getFullYear()}
+                  <span className="mt-2 block sm:mt-0 sm:ml-1 sm:inline">
+                    <a
+                      href="https://github.com/Rohit1204"
+                      className="font-medium text-brand-light underline-offset-2 hover:text-white hover:underline"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub
+                    </a>
+                  </span>
                 </p>
               </div>
             </footer>

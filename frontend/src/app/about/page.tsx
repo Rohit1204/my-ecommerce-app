@@ -54,6 +54,19 @@ export default function AboutPage() {
           <strong className="font-semibold text-zinc-800">Django REST</strong> for catalog, auth, orders, and support —
           the kind of split you’d grow into production.
         </p>
+        <p className="mt-3 text-sm text-zinc-500">
+          Designed and built by{" "}
+          <strong className="font-semibold text-zinc-800">Rohit Ahuja</strong>
+          {" "}
+          <a
+            href="https://github.com/Rohit1204/my-ecommerce-app"
+            className="font-medium text-brand hover:underline"
+            rel="noopener noreferrer"
+          >
+            (source)
+          </a>
+          .
+        </p>
       </header>
 
       <div className="relative mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
